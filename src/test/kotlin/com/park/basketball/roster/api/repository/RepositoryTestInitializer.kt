@@ -1,4 +1,4 @@
-package com.park.roaster.api.repository
+package com.park.basketball.roster.api.repository
 
 import org.springframework.boot.test.util.TestPropertyValues
 import org.springframework.context.ApplicationContextInitializer
@@ -12,7 +12,7 @@ class RepositoryTestInitializer : ApplicationContextInitializer<ConfigurableAppl
         val mySqlTestContainer =
             MySQLContainer<Nothing>(DockerImageName.parse("mysql:8.0.29"))
                 .apply {
-                    withDatabaseName("roaster")
+                    withDatabaseName("roster")
                     withInitScript("db/init.sql")
                     withReuse(true)
                 }

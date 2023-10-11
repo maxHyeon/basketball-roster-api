@@ -1,1 +1,1 @@
-rootProject.name = "roaster-api"
+rootProject.name = "roster-api"

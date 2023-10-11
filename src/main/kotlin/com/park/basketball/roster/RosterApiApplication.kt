@@ -1,11 +1,11 @@
-package com.park.roaster.api
+package com.park.basketball.roster
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class RoasterApiApplication
+class RosterApiApplication
 
 fun main(args: Array<String>) {
-    runApplication<RoasterApiApplication>(*args)
+    runApplication<RosterApiApplication>(*args)
 }

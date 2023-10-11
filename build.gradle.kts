@@ -17,7 +17,7 @@ plugins {
 apply(plugin = "io.spring.dependency-management")
 apply(plugin = "org.jlleitschuh.gradle.ktlint")
 
-group = "com.park.roaster"
+group = "com.park.basketball"
 version = "0.0.1-SNAPSHOT"
 
 java {

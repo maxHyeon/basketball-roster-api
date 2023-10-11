@@ -1,4 +1,4 @@
-package com.park.roaster.api.repository
+package com.park.basketball.roster.api.repository
 
 import com.github.javafaker.Faker
 import kotlin.random.Random

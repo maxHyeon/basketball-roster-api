@@ -1,8 +1,8 @@
-package com.park.roaster.api.config
+package com.park.basketball.roster.api.config
 
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 
 @EnableJpaRepositories(
-    basePackages = ["com.park.roaster.api"],
+    basePackages = ["com.park.basketball.roster.api"],
 )
 class RepositoryConfig

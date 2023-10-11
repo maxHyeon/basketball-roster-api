@@ -1,6 +1,6 @@
-package com.park.roaster.api.repository
+package com.park.basketball.roster.api.repository
 
-import com.park.roaster.api.config.RepositoryConfig
+import com.park.basketball.roster.api.config.RepositoryConfig
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase

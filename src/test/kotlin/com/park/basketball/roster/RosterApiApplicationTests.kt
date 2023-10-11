@@ -1,6 +1,6 @@
-package com.park.roaster.api
+package com.park.basketball.roster
 
 import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
-class RoasterApiApplicationTests
+class RosterApiApplicationTests
