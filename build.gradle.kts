@@ -11,7 +11,7 @@ plugins {
 
     kotlin("plugin.spring") version "1.9.10"
     kotlin("plugin.allopen") version "1.9.10"
-    kotlin("plugin.jpa") version "1.9.10"
+    kotlin("plugin.noarg") version "1.9.10"
 }
 
 apply(plugin = "io.spring.dependency-management")
@@ -31,7 +31,7 @@ repositories {
 dependencyManagement {
     imports {
         mavenBom("org.springframework.boot:spring-boot-dependencies:3.1.1")
-        mavenBom("com.amazonaws:aws-java-sdk-bom:1.12.529")
+        mavenBom("software.amazon.awssdk:bom:2.20.43")
     }
 }
 
@@ -42,6 +42,7 @@ dependencies {
 
     // spring
     implementation("org.springframework.boot:spring-boot-starter")
+    implementation("org.springframework.boot:spring-boot-starter-web")
     kapt("org.springframework.boot:spring-boot-configuration-processor")
 
     // mapstruct
@@ -49,7 +50,7 @@ dependencies {
     implementation("org.mapstruct:mapstruct:1.5.5.Final")
 
     // aws
-    implementation("com.amazonaws:aws-java-sdk-dynamodb")
+    implementation("software.amazon.awssdk:dynamodb-enhanced")
 
     // test
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
@@ -67,7 +68,11 @@ dependencies {
 }
 
 allOpen {
-    annotation("jakarta.persistence.Entity")
+    annotation("org.mapstruct.Mapper")
+}
+
+noArg {
+    annotation("software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean")
 }
 
 configure<KtlintExtension> {

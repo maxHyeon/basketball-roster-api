@@ -1,22 +1,31 @@
 package com.park.basketball.roster.api.model
 
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable
 import org.mapstruct.Mapper
 import org.mapstruct.factory.Mappers
+import software.amazon.awssdk.enhanced.dynamodb.TableSchema
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbPartitionKey
+import java.time.LocalDateTime
 
-@DynamoDBTable(tableName = "roster")
+@DynamoDbBean
 data class Roster(
-    @DynamoDBHashKey(attributeName = "id")
+    @get:DynamoDbPartitionKey
     var id: String,
-) {
-    companion object
+    var created: LocalDateTime,
+    var modified: LocalDateTime,
+) : RosterEntity {
+    companion object {
+        val TABLE_SCHEMA = TableSchema.fromBean(Roster::class.java)
+        val TABLE_NAME = "Roster"
+    }
 
     fun toDto() = RosterMapper.INSTANCE.toDto(this)
 }
 
 data class RosterDto(
     var id: String,
+    var created: LocalDateTime,
+    var modified: LocalDateTime,
 ) {
     companion object
 

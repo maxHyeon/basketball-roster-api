@@ -1,3 +1,7 @@
+server:
+  shutdown: graceful
+  port: 8080
+
 spring:
   profiles:
     active: 'local'

@@ -1,25 +1,27 @@
 package com.park.basketball.roster.api.model
 
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable
 import org.mapstruct.Mapper
 import org.mapstruct.factory.Mappers
+import software.amazon.awssdk.enhanced.dynamodb.TableSchema
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbPartitionKey
+import java.time.LocalDateTime
 
-@DynamoDBTable(tableName = "member")
+@DynamoDbBean
 data class Member(
-    @DynamoDBHashKey(attributeName = "id")
+    @get:DynamoDbPartitionKey
     var id: String,
-    @DynamoDBAttribute(attributeName = "name")
     var name: String,
-    @DynamoDBAttribute(attributeName = "positions")
     var positions: List<Position>,
-    @DynamoDBAttribute(attributeName = "quarters")
     var quarters: Int,
-    @DynamoDBAttribute(attributeName = "teamId")
     var teamId: String,
-) {
-    companion object
+    var created: LocalDateTime,
+    var modified: LocalDateTime,
+) : RosterEntity {
+    companion object {
+        val TABLE_SCHEMA = TableSchema.fromBean(Member::class.java)
+        val TABLE_NAME = "Member"
+    }
 
     fun toDto() = MemberMapper.INSTANCE.toDto(this)
 }
@@ -30,6 +32,8 @@ data class MemberDto(
     var positions: List<Position>,
     var quarters: Int,
     var teamId: String,
+    var created: LocalDateTime,
+    var modified: LocalDateTime,
 ) {
     companion object
 
