@@ -31,6 +31,7 @@ repositories {
 dependencyManagement {
     imports {
         mavenBom("org.springframework.boot:spring-boot-dependencies:3.1.1")
+        mavenBom("com.amazonaws:aws-java-sdk-bom:1.12.529")
     }
 }
 
@@ -43,10 +44,12 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter")
     kapt("org.springframework.boot:spring-boot-configuration-processor")
 
-    // jpa
-    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("org.springframework.boot:spring-boot-starter-jdbc")
-    implementation("com.mysql:mysql-connector-j")
+    // mapstruct
+    kapt("org.mapstruct:mapstruct-processor:1.5.5.Final")
+    implementation("org.mapstruct:mapstruct:1.5.5.Final")
+
+    // aws
+    implementation("com.amazonaws:aws-java-sdk-dynamodb")
 
     // test
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
