@@ -1,7 +1,7 @@
 package com.park.basketball.roster.api.controller
 
-import com.park.basketball.roster.api.model.TeamDto
-import com.park.basketball.roster.api.service.TeamService
+import com.park.basketball.roster.api.model.MemberDto
+import com.park.basketball.roster.api.service.MemberService
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -11,31 +11,31 @@ import org.springframework.web.bind.annotation.RestController
 import java.lang.Exception
 
 @RestController
-class TeamController(
-    private val teamService: TeamService,
+class MemberController(
+    private val memberService: MemberService,
 ) : AbstractController() {
-    @GetMapping(value = ["/team/{id}"])
-    fun getTeamById(
+    @GetMapping(value = ["/member/{id}"])
+    fun getMemberById(
         @PathVariable(value = "id") id: String,
-    ): TeamDto {
-        return teamService.findById(id)
+    ): MemberDto {
+        return memberService.findById(id)
             .map { it.toDto() }
             .orElseThrow { Exception("NotFound") }
     }
 
-    @PostMapping(value = ["/team"])
-    fun postTeam(
-        @RequestBody teamDto: TeamDto,
+    @PostMapping(value = ["/member"])
+    fun postMember(
+        @RequestBody memberDto: MemberDto,
     ): Boolean {
-        teamService.save(teamDto)
+        memberService.save(memberDto)
         return true
     }
 
-    @DeleteMapping(value = ["/team/{id}"])
-    fun deleteTeam(
+    @DeleteMapping(value = ["/member/{id}"])
+    fun deleteMember(
         @PathVariable(value = "id") id: String,
     ): Boolean {
-        teamService.delete(id)
+        memberService.delete(id)
         return true
     }
 }
