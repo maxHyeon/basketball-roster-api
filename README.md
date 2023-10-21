@@ -1,5 +1,13 @@
 # basketball-roster-api
 
+## API List
+See Swagger (springdoc-openapi v2.2.0)
+
+| Phase  | Url                                         |
+|--------|---------------------------------------------|
+| Local  | http://localhost:8080/swagger-ui/index.html |
+
+
 ## Develop
 This project written by kotlin with spring boot 3.x.
 

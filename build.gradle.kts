@@ -52,6 +52,9 @@ dependencies {
     // aws
     implementation("software.amazon.awssdk:dynamodb-enhanced")
 
+    // doc
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0")
+
     // test
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(module = "mockito-core")
