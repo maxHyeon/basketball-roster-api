@@ -1,5 +1,6 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jlleitschuh.gradle.ktlint.KtlintExtension
+import org.springframework.boot.gradle.tasks.bundling.BootBuildImage
 
 plugins {
     id("org.springframework.boot") version "3.1.4"
@@ -80,6 +81,11 @@ noArg {
 
 configure<KtlintExtension> {
     version = "1.0.0"
+}
+
+tasks.getByName<BootBuildImage>("bootBuildImage") {
+
+    imageName = "${System.getenv("REPO_ECR")}:latest";
 }
 
 tasks.withType<KotlinCompile> {
