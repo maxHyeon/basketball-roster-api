@@ -9,3 +9,14 @@ spring:
       local: common,local
       dev: common,dev
       prod: common,prod
+
+management:
+  endpoint:
+    health:
+      show-details: always
+      probes:
+        enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: info, caches, configrop, mappings, env, refresh, health, prometheus, busrefresh
