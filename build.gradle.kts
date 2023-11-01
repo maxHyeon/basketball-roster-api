@@ -53,6 +53,7 @@ dependencies {
 
     // aws
     implementation("software.amazon.awssdk:dynamodb-enhanced")
+    implementation("software.amazon.awssdk:sts")
 
     // doc
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0")
